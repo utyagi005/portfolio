@@ -1,6 +1,6 @@
 # Uday Tyagi — Portfolio
 
-This is my personal developer portfolio built using HTML, CSS, and JavaScript to showcase my projects, skills, and experience.
+This is my personal developer portfolio built using HTML to showcase my projects, skills, and experience.
 
 ## How to Use
 
