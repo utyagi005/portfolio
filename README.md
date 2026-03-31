@@ -1,40 +1,16 @@
-# Uday Tyagi — CS Co-op Portfolio
+# Uday Tyagi — Portfolio
 
-A lightweight single-page portfolio (HTML/CSS/JS) with smooth reveal animations to showcase my projects, learning journey, and contact info. Deployed on GitHub Pages.
+This is my personal developer portfolio built using HTML, CSS, and JavaScript to showcase my projects, skills, and experience.
 
-**Live site:** https://utyagi005.github.io/portfolio  
-**Resume:** (add link later)
+## How to Use
 
-## Features
-- Sticky nav + smooth scrolling
-- Reveal-on-scroll animations (IntersectionObserver)
-- Responsive grid and timeline
-- Easy “Projects” data model (JS array → cards)
+* Open `index.html` in any browser to view locally
+* Or visit the live site: https://utyagi005.github.io/portfolio
+* Navigate using the top menu (About, Skills, Projects, etc.)
+* Click project links to view demos or learn more
 
-## Tech Stack
-- HTML5, CSS3 (no framework)
-- Vanilla JavaScript (no build step)
-- GitHub Pages (hosting)
+## Note
 
-
-## Local Development
-1. Clone repo  
-2. Open `index.html` in any browser (no server needed)
-
-## Deployment (GitHub Pages)
-- Settings → Pages → Source: **Deploy from a branch**, Branch: `main`, Folder: `/ (root)`
-- Site will be available at `https://<username>.github.io/portfolio/`
-
-## Add / Edit Projects
-Open `index.html`, find the `// Projects data` block (see “Make it more modular” below).  
-Add a new object to the `projects` array and it will render automatically.
-
-## Roadmap
-- Light/Dark mode toggle  
-- Real project links (GitHub, demos)  
-- Contact form via Formspree  
-- SEO/OpenGraph metadata & favicon
-
-## License
-MIT
+Portfolio is live 🚀
+If something breaks… it’s not a bug, it’s an **Advanced Software Concept (ASC)** 😌
 
