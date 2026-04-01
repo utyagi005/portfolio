@@ -777,6 +777,14 @@
     list-style: none;
   }
 
+  .project-desc-text {
+    font-size: 13px;
+    color: #7a8a9a;
+    line-height: 1.8;
+    flex: 1;
+    margin-bottom: 24px;
+  }
+
   .project-desc li {
     padding-left: 18px;
     position: relative;
@@ -844,7 +852,22 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">UT<span>.</span></div>
+  <div style="display:flex;align-items:center;gap:14px;">
+    <div class="nav-logo">UT<span>.</span></div>
+    <button id="themeToggle" title="Toggle accent color" style="
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      cursor: pointer;
+      transition: all 0.3s;
+      border-radius: 2px;
+    ">🎨 theme</button>
+  </div>
   <ul class="nav-links">
     <li><a href="#about">about</a></li>
     <li><a href="#skills">skills</a></li>
@@ -876,6 +899,7 @@
     <div class="hero-cta">
       <a href="mailto:utyagi@uwo.ca" class="btn-primary">⟶ &nbsp;Get in Touch</a>
       <a href="https://linkedin.com/in/udaytyagi-western" target="_blank" class="btn-secondary">↗ &nbsp;LinkedIn</a>
+      <a href="https://github.com/utyagi005" target="_blank" class="btn-secondary">↗ &nbsp;GitHub</a>
     </div>
   </div>
 </section>
@@ -929,15 +953,20 @@
         <span class="skill-tag">C++</span>
         <span class="skill-tag">Python</span>
         <span class="skill-tag">Java</span>
+        <span class="skill-tag">JavaScript</span>
         <span class="skill-tag">SQL</span>
+        <span class="skill-tag">HTML/CSS</span>
       </div>
     </div>
     <div class="skill-cat">
-      <div class="skill-cat-title">Tools & Environment</div>
+      <div class="skill-cat-title">Tools & Frameworks</div>
       <div class="skill-tags">
         <span class="skill-tag">Git</span>
         <span class="skill-tag">Linux</span>
         <span class="skill-tag">Qt</span>
+        <span class="skill-tag">Node.js</span>
+        <span class="skill-tag">Express</span>
+        <span class="skill-tag">React</span>
         <span class="skill-tag">SQLite</span>
         <span class="skill-tag">VS Code</span>
         <span class="skill-tag">Excel</span>
@@ -1000,14 +1029,12 @@
         <span class="stack-tag">Observer Pattern</span>
         <span class="stack-tag">Factory Pattern</span>
       </div>
-      <ul class="project-desc">
-        <li>Built a full desktop application in C/C++ with Qt, applying MVC, Factory, and Observer design patterns for modularity and extensibility</li>
-        <li>Designed a relational SQLite database with optimized query handling to minimize latency across high-volume operations</li>
-        <li>Profiled and debugged performance bottlenecks through iterative testing, improving runtime responsiveness significantly</li>
-        <li>Focused on memory efficiency and clean architecture to ensure maintainability at scale</li>
-      </ul>
+      <p class="project-desc-text">
+        A full desktop inventory and sales management application built in C/C++ with the Qt framework. Architected using MVC, Factory, and Observer design patterns for modular, extensible code. Features a relational SQLite database with optimized queries, and was profiled and debugged for runtime performance and memory efficiency.
+      </p>
       <div class="project-footer">
         <a href="https://youtu.be/b-6U_eZxdSA" target="_blank" class="proj-link primary">▶ &nbsp;Watch Demo</a>
+        <a href="https://github.com/utyagi005/smart-inventory-tracker" target="_blank" class="proj-link">↗ &nbsp;View on GitHub</a>
       </div>
     </div>
 
@@ -1025,14 +1052,54 @@
         <span class="stack-tag">Factory Pattern</span>
         <span class="stack-tag">GUI</span>
       </div>
-      <ul class="project-desc">
-        <li>Co-developed a virtual pet simulation game in Java with a full GUI, using State and Factory patterns to drive pet behavior across Normal, Hungry, Sleeping, Angry, and Dead states</li>
-        <li>Designed CSV-based game state persistence and built the tutorial/instructions screen with detailed control documentation</li>
-        <li>Led team meeting minutes and contributed to UML class diagrams, design documentation, and requirements modelling</li>
-        <li>Validated quality through comprehensive JUnit unit tests, integration, validation, and system testing — all cases passed</li>
-      </ul>
+      <p class="project-desc-text">
+        A virtual pet simulation game built in Java with a full GUI, driven by event-based OOP logic using State and Factory patterns. Features CSV-based save/load persistence, multiple pet states (Normal, Hungry, Sleeping, Angry, Dead), and comprehensive testing via JUnit unit, integration, and system tests.
+      </p>
       <div class="project-footer">
-        <span class="proj-link" style="cursor:default;opacity:0.45;">No Demo Yet</span>
+        <a href="https://github.com/utyagi005/FurEverFriend" target="_blank" class="proj-link">↗ &nbsp;View on GitHub</a>
+      </div>
+    </div>
+
+    <!-- URL Shortener -->
+    <div class="project-card fade-in">
+      <div class="project-card-top">
+        <div class="project-name">URL Shortener<br><span style="font-size:13px;color:var(--muted);font-family:'JetBrains Mono',monospace;font-weight:400;">Full-Stack Web App</span></div>
+        <div class="project-badge no-video">Full-Stack</div>
+      </div>
+      <div class="project-stack">
+        <span class="stack-tag">JavaScript</span>
+        <span class="stack-tag">Node.js</span>
+        <span class="stack-tag">Express</span>
+        <span class="stack-tag">React</span>
+        <span class="stack-tag">SQLite</span>
+        <span class="stack-tag">REST API</span>
+      </div>
+      <p class="project-desc-text">
+        A full-stack URL shortener with click analytics, custom alias support, and a React dashboard for managing links. Built with a Node.js/Express backend serving a RESTful API, with SQLite for persistent storage. Covers end-to-end web development from API design to frontend UI.
+      </p>
+      <div class="project-footer">
+        <a href="https://github.com/utyagi005/url-shortener" target="_blank" class="proj-link">↗ &nbsp;View on GitHub</a>
+      </div>
+    </div>
+
+    <!-- Price Tracker -->
+    <div class="project-card fade-in">
+      <div class="project-card-top">
+        <div class="project-name">Price Tracker<br><span style="font-size:13px;color:var(--muted);font-family:'JetBrains Mono',monospace;font-weight:400;">Python CLI Tool</span></div>
+        <div class="project-badge no-video">Scripting</div>
+      </div>
+      <div class="project-stack">
+        <span class="stack-tag">Python</span>
+        <span class="stack-tag">Web Scraping</span>
+        <span class="stack-tag">BeautifulSoup</span>
+        <span class="stack-tag">CSV</span>
+        <span class="stack-tag">CLI</span>
+      </div>
+      <p class="project-desc-text">
+        A Python command-line tool that scrapes product pages, tracks price history in CSV files, and sends alerts when prices drop below a user-defined threshold. Demonstrates scripting, web scraping, file I/O, and practical automation for everyday use.
+      </p>
+      <div class="project-footer">
+        <a href="https://github.com/utyagi005/price-tracker" target="_blank" class="proj-link">↗ &nbsp;View on GitHub</a>
       </div>
     </div>
 
@@ -1136,6 +1203,9 @@
     <a href="https://linkedin.com/in/udaytyagi-western" target="_blank" class="contact-link">
       <span class="icon">🔗</span> LinkedIn
     </a>
+    <a href="https://github.com/utyagi005" target="_blank" class="contact-link">
+      <span class="icon">⌨</span> GitHub
+    </a>
   </div>
 </section>
 
@@ -1148,7 +1218,6 @@
   // Scroll-based fade-in with staggered delay
   const fadeEls = document.querySelectorAll('.fade-in');
 
-  // Remove the CSS animation so scroll observer takes over instead
   fadeEls.forEach(el => {
     el.style.animation = 'none';
     el.style.opacity = '0';
@@ -1164,11 +1233,28 @@
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.15 });
 
-  fadeEls.forEach((el, i) => {
-    el.style.transitionDelay = (i % 4) * 80 + 'ms';
-    observer.observe(el);
+  fadeEls.forEach(el => observer.observe(el));
+
+  // Theme toggle — cyan ↔ crimson
+  const toggle = document.getElementById('themeToggle');
+  let isCrimson = false;
+
+  toggle.addEventListener('click', () => {
+    isCrimson = !isCrimson;
+    const root = document.documentElement;
+    if (isCrimson) {
+      root.style.setProperty('--accent', '#dc143c');
+      root.style.setProperty('--accent-dim', 'rgba(220, 20, 60, 0.08)');
+      root.style.setProperty('--green', '#ff4d6a');
+      toggle.textContent = '🎨 crimson';
+    } else {
+      root.style.setProperty('--accent', '#00d4ff');
+      root.style.setProperty('--accent-dim', 'rgba(0, 212, 255, 0.08)');
+      root.style.setProperty('--green', '#00ff88');
+      toggle.textContent = '🎨 theme';
+    }
   });
 </script>
 </body>
