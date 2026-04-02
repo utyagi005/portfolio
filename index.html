@@ -854,19 +854,46 @@
 <nav>
   <div style="display:flex;align-items:center;gap:14px;">
     <div class="nav-logo">UT<span>.</span></div>
-    <button id="themeToggle" title="Toggle accent color" style="
-      background: none;
-      border: 1px solid var(--border);
-      color: var(--muted);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 5px 12px;
-      cursor: pointer;
-      transition: all 0.3s;
-      border-radius: 2px;
-    ">🎨 theme</button>
+    <div style="position:relative;display:inline-block;">
+      <button id="themeToggle" title="Change accent color" style="
+        background: none;
+        border: 1px solid var(--border);
+        color: var(--muted);
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 10px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 5px 12px;
+        cursor: pointer;
+        transition: all 0.3s;
+        border-radius: 2px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      "><span id="themeColorDot" style="width:8px;height:8px;border-radius:50%;background:var(--accent);display:inline-block;flex-shrink:0;"></span>🎨 theme</button>
+      <div id="themeMenu" style="
+        display: none;
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 0;
+        background: #0f1318;
+        border: 1px solid #1e2a35;
+        border-radius: 4px;
+        overflow: hidden;
+        z-index: 9999;
+        min-width: 140px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+      ">
+        <div class="theme-option" data-theme="cyan"    style="--dot:#00d4ff"   >● Cyan (default)</div>
+        <div class="theme-option" data-theme="red"     style="--dot:#e63946"   >● Red</div>
+        <div class="theme-option" data-theme="green"   style="--dot:#00ff88"   >● Green</div>
+        <div class="theme-option" data-theme="purple"  style="--dot:#a855f7"   >● Purple</div>
+        <div class="theme-option" data-theme="hazel"   style="--dot:#c9a227"   >● Hazel</div>
+        <div class="theme-option" data-theme="orange"  style="--dot:#ff6b35"   >● Orange</div>
+        <div class="theme-option" data-theme="pink"    style="--dot:#f472b6"   >● Pink</div>
+        <div class="theme-option" data-theme="teal"    style="--dot:#2dd4bf"   >● Teal</div>
+      </div>
+    </div>
   </div>
   <ul class="nav-links">
     <li><a href="#about">about</a></li>
@@ -1237,16 +1264,63 @@
 
   fadeEls.forEach(el => observer.observe(el));
 
-  // Theme toggle — cyan ↔ crimson
-  const toggle = document.getElementById('themeToggle');
-  let isCrimson = false;
+  // Theme switcher — multi-color dropdown
+  const themes = {
+    cyan:   { accent: '#00d4ff', dim: 'rgba(0,212,255,0.08)',   accent2: '#7c3aed', green: '#00ff88' },
+    red:    { accent: '#e63946', dim: 'rgba(230,57,70,0.08)',   accent2: '#9b2335', green: '#ff6b6b' },
+    green:  { accent: '#00ff88', dim: 'rgba(0,255,136,0.08)',   accent2: '#00c96e', green: '#00ffaa' },
+    purple: { accent: '#a855f7', dim: 'rgba(168,85,247,0.08)',  accent2: '#7c3aed', green: '#c084fc' },
+    hazel:  { accent: '#c9a227', dim: 'rgba(201,162,39,0.08)',  accent2: '#a07d1a', green: '#e8c547' },
+    orange: { accent: '#ff6b35', dim: 'rgba(255,107,53,0.08)',  accent2: '#cc4400', green: '#ffaa00' },
+    pink:   { accent: '#f472b6', dim: 'rgba(244,114,182,0.08)', accent2: '#c026a0', green: '#f9a8d4' },
+    teal:   { accent: '#2dd4bf', dim: 'rgba(45,212,191,0.08)',  accent2: '#0d9488', green: '#5eead4' },
+  };
 
-  toggle.addEventListener('click', () => {
-    isCrimson = !isCrimson;
-    const root = document.documentElement;
-    if (isCrimson) {
-      root.style.setProperty('--accent', '#dc143c');
-      root.style.setProperty('--accent-dim', 'rgba(220, 20, 60, 0.08)');
-      root.style.setProperty('--green', '#ff4d6a');
-      toggle.textContent = '🎨 crimson';
-  
+  const toggle   = document.getElementById('themeToggle');
+  const menu     = document.getElementById('themeMenu');
+  const colorDot = document.getElementById('themeColorDot');
+
+  // Style the dropdown options
+  document.querySelectorAll('.theme-option').forEach(opt => {
+    const dotColor = opt.style.getPropertyValue('--dot');
+    opt.innerHTML = `<span style="color:${dotColor};font-size:13px;line-height:1;">●</span>${opt.textContent.replace('●','').trim()}`;
+    Object.assign(opt.style, {
+      padding: '9px 16px',
+      fontFamily: "'JetBrains Mono', monospace",
+      fontSize: '11px',
+      color: '#4a6070',
+      cursor: 'pointer',
+      display: 'flex',
+      alignItems: 'center',
+      gap: '8px',
+      letterSpacing: '0.06em',
+      transition: 'background 0.15s, color 0.15s',
+    });
+    opt.addEventListener('mouseenter', () => { opt.style.background = '#151a22'; opt.style.color = '#e2e8f0'; });
+    opt.addEventListener('mouseleave', () => { opt.style.background = 'transparent'; opt.style.color = '#4a6070'; });
+  });
+
+  // Toggle dropdown open/close
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+  });
+
+  document.addEventListener('click', () => { menu.style.display = 'none'; });
+
+  // Apply theme on option click
+  document.querySelectorAll('.theme-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      const t = themes[opt.dataset.theme];
+      const root = document.documentElement;
+      root.style.setProperty('--accent',     t.accent);
+      root.style.setProperty('--accent-dim', t.dim);
+      root.style.setProperty('--accent2',    t.accent2);
+      root.style.setProperty('--green',      t.green);
+      colorDot.style.background = t.accent;
+      menu.style.display = 'none';
+    });
+  });
+</script>
+</body>
+</html>
