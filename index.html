@@ -720,6 +720,33 @@
 
   .project-card:hover::before { transform: scaleX(1); }
 
+  .project-card.featured {
+    grid-column: 1 / -1;
+  }
+
+  .project-feature-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr);
+    gap: 28px;
+    align-items: center;
+  }
+
+  .project-showcase {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    align-items: center;
+  }
+
+  .project-showcase img {
+    width: 100%;
+    aspect-ratio: 9 / 19;
+    object-fit: cover;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    box-shadow: 0 14px 36px rgba(0,0,0,0.35);
+  }
+
   .project-card-top {
     display: flex;
     justify-content: space-between;
@@ -734,6 +761,13 @@
     font-weight: 700;
     color: var(--text);
     line-height: 1.2;
+  }
+
+  .project-subtitle {
+    font-size: 13px;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 400;
   }
 
   .project-badge {
@@ -872,6 +906,9 @@
     #about .about-grid { grid-template-columns: 1fr; }
     .skills-categories { grid-template-columns: 1fr; }
     .projects-grid { grid-template-columns: 1fr; }
+    .project-card.featured { grid-column: auto; }
+    .project-feature-layout { grid-template-columns: 1fr; }
+    .project-showcase { order: -1; }
     .about-stats { grid-template-columns: 1fr 1fr; }
   }
 
@@ -918,7 +955,7 @@
         display: flex;
         align-items: center;
         gap: 6px;
-      "><span id="themeColorDot" style="width:8px;height:8px;border-radius:50%;background:var(--accent);display:inline-block;flex-shrink:0;"></span>🎨 theme</button>
+      " type="button"><span id="themeColorDot" style="width:8px;height:8px;border-radius:50%;background:var(--accent);display:inline-block;flex-shrink:0;"></span>🎨 theme</button>
       <div id="themeMenu" style="
         display: none;
         position: absolute;
@@ -1030,6 +1067,7 @@
         <span class="skill-tag">Java</span>
         <span class="skill-tag">C</span>
         <span class="skill-tag">C++</span>
+        <span class="skill-tag">Swift</span>
         <span class="skill-tag">SQL</span>
       </div>
     </div>
@@ -1044,6 +1082,7 @@
         <span class="skill-tag">Express</span>
         <span class="skill-tag">Spring Boot</span>
         <span class="skill-tag">REST APIs</span>
+        <span class="skill-tag">SwiftUI</span>
       </div>
     </div>
     <div class="skill-cat">
@@ -1057,6 +1096,7 @@
         <span class="skill-tag">Electron</span>
         <span class="skill-tag">Qt</span>
         <span class="skill-tag">Local-First Apps</span>
+        <span class="skill-tag">iOS Development</span>
       </div>
     </div>
     <div class="skill-cat">
@@ -1098,6 +1138,39 @@
     <div class="section-line"></div>
   </div>
   <div class="projects-grid">
+
+    <!-- Pocket Pivot -->
+    <div class="project-card featured fade-in">
+      <div class="project-feature-layout">
+        <div>
+          <div class="project-card-top">
+            <div class="project-name">Pocket Pivot<br><span class="project-subtitle">Native iOS Puzzle Game</span></div>
+            <div class="project-badge">Playtest Ready</div>
+          </div>
+          <div class="project-stack">
+            <span class="stack-tag">Swift</span>
+            <span class="stack-tag">SwiftUI</span>
+            <span class="stack-tag">Observation</span>
+            <span class="stack-tag">iOS</span>
+            <span class="stack-tag">Deterministic Engine</span>
+            <span class="stack-tag">UserDefaults</span>
+            <span class="stack-tag">Firebase Hooks</span>
+            <span class="stack-tag">Google Mobile Ads</span>
+          </div>
+          <p class="project-desc-text">
+            A native iOS puzzle game where players place pieces, rotate 2x2 pockets of the board, and chain dramatic clears. Built as an end-to-end product sprint with endless arcade mode, seeded daily challenges, local run history, shareable result cards, optional analytics/ad service layers, and App Store-ready support assets.
+          </p>
+          <div class="project-footer">
+            <a href="https://github.com/utyagi005/PocketPivot" target="_blank" rel="noopener" class="proj-link primary">↗ &nbsp;View on GitHub</a>
+          </div>
+        </div>
+        <div class="project-showcase">
+          <img src="https://raw.githubusercontent.com/utyagi005/PocketPivot/main/PocketPivot/AppStoreAssets/arcade-showcase.jpg" alt="Pocket Pivot arcade gameplay screen">
+          <img src="https://raw.githubusercontent.com/utyagi005/PocketPivot/main/PocketPivot/AppStoreAssets/daily-showcase.jpg" alt="Pocket Pivot daily challenge screen">
+          <img src="https://raw.githubusercontent.com/utyagi005/PocketPivot/main/PocketPivot/AppStoreAssets/gameover-showcase.jpg" alt="Pocket Pivot game over summary screen">
+        </div>
+      </div>
+    </div>
 
     <!-- Nodeskio IMS -->
     <div class="project-card fade-in">
